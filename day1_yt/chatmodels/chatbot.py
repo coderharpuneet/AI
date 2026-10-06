@@ -1,22 +1,41 @@
 from dotenv import load_dotenv
 
-load_dotenv()  # Load environment variables from .env file
+load_dotenv()
 
 from langchain_groq import ChatGroq
+from langchain_core.messages import AIMessage, SystemMessage , HumanMessage
 
-model = ChatGroq(
-     model="openai/gpt-oss-120b"
-)
-messages=[
-     
+
+model = ChatGroq(model="openai/gpt-oss-120b", temperature=0.9)
+
+print("chosse your AI mode")
+print("press 1 for Angry mode")
+print("press 2 for funny mode ")
+print("press 3 for sad mode")
+
+choice = int(input("tell your response :- "))
+
+if choice == 1:
+    mode = "You are an angry AI agent. You respond aggressively and impatiently."
+elif choice == 2:
+    mode = "You are a very funny AI agent. You respond with humor and jokes."
+elif choice == 3:
+    mode = "You are a very sad AI agent. You respond in a depressed and emotional tone."
+
+
+messages = [
+    SystemMessage(content=mode)
 ]
-print("---------------Welcome to the Chatbot! Press 0 to exit---------------")
+
+print("----------------- welcom type 0 to exit the application-----------------")
 while True:
-     prompt=input("You : ")
-     messages.append(prompt)
-     if prompt == "0":
-          print("---------------Thank you for using the Chatbot!---------------")
-          break
-     response = model.invoke(messages, temperature=0.9)
-     messages.append(response.content)
-     print("Bot : ", response.content)
+    
+    prompt = input("You : ")
+    messages.append(HumanMessage(content=prompt))
+    if prompt == "0":
+        break
+    response = model.invoke(messages)
+    messages.append(AIMessage(content=response.content))
+    print("Bot :",response.content)
+
+print(messages)
