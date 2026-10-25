@@ -1,0 +1,65 @@
+# ==========================================
+# RAG Application - Groq + LangChain + ChromaDB
+# Python 3.11 or 3.12 recommended
+# Install with: python -m pip install -r requirements.txt
+# ==========================================
+
+# --- LLM provider: Groq ---
+langchain-groq
+streamlit
+
+# --- LangChain core and RAG orchestration ---
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+
+# --- Vector database ---
+chromadb
+langchain-chroma
+
+# --- Embeddings ---
+# Pick an embedding provider based on your needs.
+# Hugging Face hosted API (no local model download):
+huggingface-hub
+# Optional local embeddings (downloads model files):
+# sentence-transformers
+# langchain-huggingface
+
+# --- Document loaders / parsers ---
+pypdf                 # PDF files
+python-docx            # DOCX files
+docx2txt               # DOCX document loader
+unstructured           # More document types; may need extra system dependencies
+beautifulsoup4         # HTML parsing
+requests               # Fetching web pages / HTTP APIs
+lxml                   # Faster HTML/XML parser
+
+# --- Environment variables and configuration ---
+python-dotenv
+pydantic
+pydantic-settings
+
+# --- API backend (optional but recommended) ---
+fastapi
+uvicorn[standard]
+python-multipart       # File uploads through FastAPI
+
+# --- Data handling / utilities ---
+numpy
+pandas
+tiktoken              # Token counting for supported tokenizer formats
+
+# --- Optional: retrieval quality / reranking ---
+rank-bm25              # Keyword-based BM25 retrieval
+# sentence-transformers  # Can also support local reranking models
+
+# --- Optional: evaluation / tracing ---
+# ragas
+# langsmith
+
+# --- Optional: notebook / development tools ---
+# jupyter
+# ipykernel
+# pytest
+# ruff
